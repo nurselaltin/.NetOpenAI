@@ -10,11 +10,11 @@ var conf = new ConfigurationBuilder().
 
 string apiKey = conf["OpenAI:ApiKey"];
 
-AudioClient client2 = new AudioClient("tts-1", apiKey);
+AudioClient client = new AudioClient("tts-1", apiKey);
 
-string input = "Euro 2024, Avrupa Futbol Şampiyonası'nın 2024 yılında Almanya'da düzenlenecek olan 17. turnuvasıdır.";
+string input = "Dune evreni, sırlarla dolu hikâyeler ve karmaşık topluluklarla zenginleşen bir bilim kurgu şaheseridir. Bu evrene ilk adım attığımda, Bene Gesserit tarikatının bir üyesi olan Leydi Jessica’nın “Korku Duası”nı okuyarak kendini sakinleştirmesi beni derinden etkilemişti. Bu sahne, Dune dünyasına giriş yapmamın başlıca sebeplerinden biriydi ve Bene Gesserit’in gizemli ve güçlü doğasını keşfetmeye olan merakımı ateşledi.";
 
-BinaryData speech = client2.GenerateSpeech(input, GeneratedSpeechVoice.Alloy);
+BinaryData speech = client.GenerateSpeech(input, GeneratedSpeechVoice.Nova);
 
 using FileStream stream = File.OpenWrite($"{Guid.NewGuid()}.mp3");
 speech.ToStream().CopyTo(stream);
